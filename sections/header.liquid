@@ -2,9 +2,13 @@
   <div class="mx-auto px-4 sm:px-6">
     <div class="flex justify-between items-center py-6 md:justify-start md:space-x-10">
       <!-- STORE NAME / STORE LOGO -->
-      <div class="flex justify-start lg:flex-1 truncate">
-        <h1 class="text-xl font-bold truncate">{{ shop.name }}</h1>
-      </div>
+      <div class="flex items-center lg:flex-1 truncate space-x-3">
+        <a href="{{ routes.root_url }}" class="flex items-center space-x-2">
+          <img src="{{ 'dpkcart-logo.png' | asset_url }}" alt="{{ shop.name }}" height="" width="" class="h-10 w-10 object-cover rounded-full border border-gray-200 shadow-sm">
+    <h1 class="text-xl font-bold text-gray-900 truncate">{{ shop.name }}</h1>
+  </a>
+</div>
+
       <div class="-mr-2 -my-2 ml-3 md:hidden">
         <button
           x-on:click="mobileMenuOpen = true"

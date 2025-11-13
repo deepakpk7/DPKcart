@@ -1,46 +1,98 @@
-<div class="px-4 py-8">
-  <a
-    href="{{ routes.collections_url }}"
-    class="inline-flex items-center gap-2 border border-gray-300 text-gray-700 hover:bg-gray-100 hover:text-gray-900 rounded-full px-5 py-2 transition duration-300"
-  >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke-width="2"
-      stroke="currentColor"
-      class="w-4 h-4"
+<div class="bg-white dark:bg-gray-950 min-h-screen py-10 px-4 sm:px-6 lg:px-8">
+  <!-- Back Button -->
+  <div class="max-w-7xl mx-auto mb-10">
+    <a
+      href="{{ routes.collections_url }}"
+      class="inline-flex items-center gap-2 border border-gray-300 text-gray-700 hover:bg-gray-900 hover:text-white rounded-full px-5 py-2 transition duration-300"
     >
-      <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-    </svg>
-    Back to Collections
-  </a>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="2"
+        stroke="currentColor"
+        class="w-4 h-4"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+      Back to Collections
+    </a>
+  </div>
 
-  {% paginate collection.products by section.settings['numer_of-_product_per_page'] %}
-    <h1 class="text-3xl text-center"><b>{{ collection.title }}</b></h1>
+  <!-- Collection Header -->
+  <div class="max-w-7xl mx-auto text-center mb-12">
+    <h1 class="text-4xl font-extrabold text-gray-900 dark:text-white mb-3 tracking-tight">
+      {{ collection.title }}
+    </h1>
+    {% if collection.description != blank %}
+      <p class="text-gray-500 dark:text-gray-400 max-w-3xl mx-auto">
+        {{ collection.description }}
+      </p>
+    {% endif %}
+  </div>
 
-    <div class="max-w-6xl mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {% for product in collection.products %}
-          {% render 'product-card', product_product: product %}
+  <!-- Product Grid -->
+  {% paginate collection.products by section.settings.number_of_products_per_page %}
+    <div class="max-w-7xl mx-auto">
+      {% if collection.products.size > 0 %}
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          {% for product in collection.products %}
+            <div class="group bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500">
+              <a href="{{ product.url }}">
+                <!-- Product Image -->
+                <div class="relative h-72 overflow-hidden">
+                  <img
+                    src="{{ product.featured_image | img_url: 'large' }}"
+                    alt="{{ product.title }}"
+                    class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 ease-in-out"
+                  >
+                  {% if product.compare_at_price > product.price %}
+                    <span class="absolute top-3 left-3 bg-red-600 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                      Sale
+                    </span>
+                  {% endif %}
+                </div>
 
-        {% else %}
-          <p>There are no products inside of this collection</p>
-        {% endfor %}
-      </div>
+                <!-- Product Info -->
+                <div class="p-5 text-left">
+                  <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 truncate group-hover:text-gray-900 transition">
+                    {{ product.title }}
+                  </h3>
+                  <div class="mt-2">
+                    {% if product.compare_at_price > product.price %}
+                      <span class="text-lg font-bold text-gray-900 dark:text-white">{{ product.price | money }}</span>
+                      <span class="text-sm line-through text-gray-500 ml-2">{{ product.compare_at_price | money }}</span>
+                    {% else %}
+                      <span class="text-lg font-bold text-gray-900 dark:text-white">{{ product.price | money }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="text-center text-gray-600 dark:text-gray-300 mt-10">
+          There are no products in this collection yet.
+        </p>
+      {% endif %}
     </div>
 
-    {% render 'pagination', pagination: paginate %}
+    <!-- Pagination -->
+    <div class="max-w-7xl mx-auto mt-12">
+      {% render 'pagination', pagination: paginate %}
+    </div>
   {% endpaginate %}
 </div>
+
 {% schema %}
 {
   "name": "Collection Template",
   "settings": [
     {
       "type": "number",
-      "id": "numer_of-_product_per_page",
-      "default": 6,
+      "id": "number_of_products_per_page",
+      "default": 8,
       "label": "Number of products per page"
     }
   ]
