@@ -1,83 +1,151 @@
-<div class="space-y-5">
-    <!-- Name Fields -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-        <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
-            <input type="text" name="address[first_name]" value="{{ form.first_name }}"
-                placeholder="Enter your first name"
-                class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-gray-800 shadow-sm focus:border-gray-800 focus:ring-1 focus:ring-gray-800 focus:outline-none transition">
-        </div>
-        <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
-            <input type="text" name="address[last_name]" value="{{ form.last_name }}" placeholder="Enter your last name"
-                class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-gray-800 shadow-sm focus:border-gray-800 focus:ring-1 focus:ring-gray-800 focus:outline-none transition">
-        </div>
-    </div>
-
-    <!-- Company -->
+<div class="space-y-6" x-cloak>
+  <!-- Name Fields -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
     <div>
-        <label class="block text-sm font-medium text-gray-700 mb-1">Company (Optional)</label>
-        <input type="text" name="address[company]" value="{{ form.company }}" placeholder="Company name"
-            class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-gray-800 shadow-sm focus:border-gray-800 focus:ring-1 focus:ring-gray-800 focus:outline-none transition">
+      <label class="block text-sm font-semibold text-gray-800 mb-1">First Name</label>
+      <input
+        type="text"
+        name="address[first_name]"
+        value="{{ form.first_name }}"
+        placeholder=""
+        class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-gray-900 bg-gray-50 
+               focus:bg-white focus:border-gray-900 focus:ring-2 focus:ring-gray-800/20 outline-none 
+               transition-all duration-200"
+      >
     </div>
-
-    <!-- Address Lines -->
     <div>
-        <label class="block text-sm font-medium text-gray-700 mb-1">Address Line 1</label>
-        <input type="text" name="address[address1]" value="{{ form.address1 }}" placeholder="House number, street, etc."
-            class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-gray-800 shadow-sm focus:border-gray-800 focus:ring-1 focus:ring-gray-800 focus:outline-none transition">
+      <label class="block text-sm font-semibold text-gray-800 mb-1">Last Name</label>
+      <input
+        type="text"
+        name="address[last_name]"
+        value="{{ form.last_name }}"
+        placeholder=""
+        class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-gray-900 bg-gray-50 
+               focus:bg-white focus:border-gray-900 focus:ring-2 focus:ring-gray-800/20 outline-none 
+               transition-all duration-200"
+      >
+    </div>
+  </div>
+
+  <!-- Company -->
+  <div>
+    <label class="block text-sm font-semibold text-gray-800 mb-1">Company <span class="text-gray-400 text-xs">(Optional)</span></label>
+    <input
+      type="text"
+      name="address[company]"
+      value="{{ form.company }}"
+      placeholder="Company name"
+      class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-gray-900 bg-gray-50 
+             focus:bg-white focus:border-gray-900 focus:ring-2 focus:ring-gray-800/20 outline-none 
+             transition-all duration-200"
+    >
+  </div>
+
+  <!-- Address Lines -->
+  <div>
+    <label class="block text-sm font-semibold text-gray-800 mb-1">Address Line 1</label>
+    <input
+      type="text"
+      name="address[address1]"
+      value="{{ form.address1 }}"
+      placeholder="House number, street name"
+      class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-gray-900 bg-gray-50 
+             focus:bg-white focus:border-gray-900 focus:ring-2 focus:ring-gray-800/20 outline-none 
+             transition-all duration-200"
+    >
+  </div>
+
+  <div>
+    <label class="block text-sm font-semibold text-gray-800 mb-1">Address Line 2 <span class="text-gray-400 text-xs">(Optional)</span></label>
+    <input
+      type="text"
+      name="address[address2]"
+      value="{{ form.address2 }}"
+      placeholder="Apartment, suite, etc."
+      class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-gray-900 bg-gray-50 
+             focus:bg-white focus:border-gray-900 focus:ring-2 focus:ring-gray-800/20 outline-none 
+             transition-all duration-200"
+    >
+  </div>
+
+  <!-- City + ZIP -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+    <div>
+      <label class="block text-sm font-semibold text-gray-800 mb-1">City</label>
+      <input
+        type="text"
+        name="address[city]"
+        value="{{ form.city }}"
+        placeholder=""
+        class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-gray-900 bg-gray-50 
+               focus:bg-white focus:border-gray-900 focus:ring-2 focus:ring-gray-800/20 outline-none 
+               transition-all duration-200"
+      >
+    </div>
+    <div>
+      <label class="block text-sm font-semibold text-gray-800 mb-1">ZIP / Postal Code</label>
+      <input
+        type="text"
+        name="address[zip]"
+        value="{{ form.zip }}"
+        placeholder=""
+        class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-gray-900 bg-gray-50 
+               focus:bg-white focus:border-gray-900 focus:ring-2 focus:ring-gray-800/20 outline-none 
+               transition-all duration-200"
+      >
+    </div>
+  </div>
+
+  <!-- Country + Province -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+    <div>
+      <label class="block text-sm font-semibold text-gray-800 mb-1">Country</label>
+      <select
+        name="address[country]"
+        id="address_country_{{ form.id }}"
+        data-country-selector
+        data-id="{{ form.id }}"
+        value="{{ form.country }}"
+        class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-gray-900 bg-gray-50 
+               focus:bg-white focus:border-gray-900 focus:ring-2 focus:ring-gray-800/20 outline-none 
+               transition-all duration-200"
+      >
+        {{ all_country_option_tags }}
+      </select>
     </div>
 
     <div>
-        <label class="block text-sm font-medium text-gray-700 mb-1">Address Line 2 (Optional)</label>
-        <input type="text" name="address[address2]" value="{{ form.address2 }}" placeholder="Apartment, suite, etc."
-            class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-gray-800 shadow-sm focus:border-gray-800 focus:ring-1 focus:ring-gray-800 focus:outline-none transition">
+      <label class="block text-sm font-semibold text-gray-800 mb-1">Province / State</label>
+      <select
+        name="address[province]"
+        id="address_province_{{ form.id }}"
+        value="{{ form.province }}"
+        class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-gray-900 bg-gray-50 
+               focus:bg-white focus:border-gray-900 focus:ring-2 focus:ring-gray-800/20 outline-none 
+               transition-all duration-200"
+      ></select>
     </div>
+  </div>
 
-    <!-- City + ZIP -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-        <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">City</label>
-            <input type="text" name="address[city]" value="{{ form.city }}" placeholder="Enter your city"
-                class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-gray-800 shadow-sm focus:border-gray-800 focus:ring-1 focus:ring-gray-800 focus:outline-none transition">
-        </div>
-        <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">ZIP / Postal Code</label>
-            <input type="text" name="address[zip]" value="{{ form.zip }}" placeholder="e.g., 560001"
-                class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-gray-800 shadow-sm focus:border-gray-800 focus:ring-1 focus:ring-gray-800 focus:outline-none transition">
-        </div>
-    </div>
+  <!-- Phone -->
+  <div>
+    <label class="block text-sm font-semibold text-gray-800 mb-1">Phone Number</label>
+    <input
+      type="tel"
+      name="address[phone]"
+      value="{{ form.phone }}"
+      placeholder="+91"
+      class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-gray-900 bg-gray-50 
+             focus:bg-white focus:border-gray-900 focus:ring-2 focus:ring-gray-800/20 outline-none 
+             transition-all duration-200"
+    >
+  </div>
 
-    <!-- Country + Province -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-        <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Country</label>
-            <select name="address[country]" id="address_country_{{ form.id }}" data-country-selector
-                data-id="{{ form.id }}" value="{{ form.country }}"
-                class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-gray-800 shadow-sm focus:border-gray-800 focus:ring-1 focus:ring-gray-800 focus:outline-none transition">
-                {{ all_country_option_tags }}
-            </select>
-        </div>
-
-        <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Province / State</label>
-            <select name="address[province]" id="address_province_{{ form.id }}" value="{{ form.province }}"
-                class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-gray-800 shadow-sm focus:border-gray-800 focus:ring-1 focus:ring-gray-800 focus:outline-none transition"></select>
-        </div>
-    </div>
-
-    <!-- Phone -->
-    <div>
-        <label class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-        <input type="tel" name="address[phone]" value="{{ form.phone }}" placeholder="Enter your phone number"
-            class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-gray-800 shadow-sm focus:border-gray-800 focus:ring-1 focus:ring-gray-800 focus:outline-none transition">
-    </div>
-
-    <!-- Default Checkbox -->
-    <div class="flex items-center gap-2">
-        {{ form.set_as_default_checkbox }}
-        <label for="address_default_address_{{ form.id }}" class="text-sm text-gray-700 select-none">
-            Set as Default Address
-        </label>
-    </div>
+  <!-- Default Checkbox -->
+  <div class="flex items-center gap-3 mt-3">
+    {{ form.set_as_default_checkbox }}
+    <label for="address_default_address_{{ form.id }}" class="text-sm text-gray-700 select-none">
+      Set as Default Address
+    </label>
+  </div>
 </div>

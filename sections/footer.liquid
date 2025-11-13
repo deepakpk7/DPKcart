@@ -1,0 +1,148 @@
+<footer class="text-gray-200 border-t border-gray-800" style="backgroun-color: black">
+  <div class="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-y-12 gap-x-12">
+    
+    <!-- Brand / About -->
+    <div class="lg:col-span-2">
+      <h2 class="text-4xl font-extrabold text-white tracking-tight mb-4">
+        {{ shop.name }}
+      </h2>
+      <p class="text-base leading-relaxed text-gray-400 mb-8 max-w-sm">
+        {{ section.settings.description }}
+      </p>
+
+      <!-- Social Icons -->
+      <div class="flex items-center space-x-3">
+        {% if section.settings.facebook_url != blank %}
+          <a href="{{ section.settings.facebook_url }}" target="_blank"
+             class=""
+             aria-label="Facebook">
+            {% render 'icon-facebook' %}
+          </a>
+        {% endif %}
+        {% if section.settings.instagram_url != blank %}
+          <a href="{{ section.settings.instagram_url }}" target="_blank"
+             class="p-2.5 rounded-full border border-gray-600 text-gray-300 hover:text-black hover:bg-white transition duration-300 ease-in-out transform hover:scale-105"
+             aria-label="Instagram">
+            {% render 'icon-instagram' %}
+          </a>
+        {% endif %}
+        {% if section.settings.twitter_url != blank %}
+          <a href="{{ section.settings.twitter_url }}" target="_blank"
+             class="p-2.5 rounded-full border border-gray-600 text-gray-300 hover:text-black hover:bg-white transition duration-300 ease-in-out transform hover:scale-105"
+             aria-label="Twitter">
+            {% render 'icon-twitter' %}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Quick Links -->
+    <div>
+      <h3 class="text-lg font-semibold text-white uppercase mb-5 tracking-wide">
+        Quick Links
+      </h3>
+      <ul class="space-y-3">
+        {% for link in linklists[section.settings.footer_menu].links %}
+          <li>
+            <a href="{{ link.url }}"
+               class="group inline-block relative text-gray-400 hover:text-white transition">
+              {{ link.title }}
+              <span class="absolute left-0 bottom-0 w-0 h-[1px] bg-white group-hover:w-full transition-all duration-300 ease-out"></span>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <!-- Support -->
+    <div>
+      <h3 class="text-lg font-semibold text-white uppercase mb-5 tracking-wide">
+        Support
+      </h3>
+      <ul class="space-y-3">
+        <li><a href="/pages/contact" class="group text-gray-400 hover:text-white transition relative">Contact Us<span class="absolute left-0 bottom-0 w-0 h-[1px] bg-white group-hover:w-full transition-all duration-300"></span></a></li>
+        <li><a href="/policies/refund-policy" class="group text-gray-400 hover:text-white transition relative">Refund Policy<span class="absolute left-0 bottom-0 w-0 h-[1px] bg-white group-hover:w-full transition-all duration-300"></span></a></li>
+        <li><a href="/policies/shipping-policy" class="group text-gray-400 hover:text-white transition relative">Shipping Policy<span class="absolute left-0 bottom-0 w-0 h-[1px] bg-white group-hover:w-full transition-all duration-300"></span></a></li>
+        <li><a href="/policies/privacy-policy" class="group text-gray-400 hover:text-white transition relative">Privacy Policy<span class="absolute left-0 bottom-0 w-0 h-[1px] bg-white group-hover:w-full transition-all duration-300"></span></a></li>
+      </ul>
+    </div>
+
+    <!-- Newsletter -->
+    <div>
+      <h3 class="text-lg font-semibold text-white uppercase mb-5 tracking-wide">
+        Stay Updated
+      </h3>
+      <p class="text-sm text-gray-400 mb-4">
+        Subscribe to receive updates, exclusive offers & news.
+      </p>
+
+      <form method="post" action="{{ shop.url }}/contact#contact_form" id="contact_form" class="flex flex-col gap-3">
+        <input type="hidden" name="form_type" value="customer">
+        <input type="email" name="contact[email]" placeholder="Enter your email"
+          class="px-4 py-3 rounded-md bg-black text-white border border-gray-700 placeholder-gray-500 
+                 focus:border-white focus:ring-1 focus:ring-white focus:outline-none transition w-full">
+        <button type="submit"
+          class="bg-white text-black hover:bg-gray-200 font-semibold px-6 py-3 rounded-md 
+                 tracking-wide transition duration-300 ease-in-out shadow-md">
+          Subscribe
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Divider -->
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="border-t border-gray-800 my-10"></div>
+  </div>
+
+  <!-- Footer Bottom -->
+  <div class="max-w-7xl mx-auto px-6 text-center text-sm text-gray-500 pb-8">
+    <p>&copy; {{ 'now' | date: '%Y' }} 
+      <span class="text-white font-semibold">{{ shop.name }}</span>. All Rights Reserved.
+    </p>
+    <p class="mt-1 text-gray-400">Crafted with 
+      <span class="text-white">❤️</span> by 
+      <span class="text-white font-semibold">Deepak P.K</span>
+    </p>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Store Description",
+      "default": "Your trusted destination for smart shopping. Great deals, fast delivery, and premium quality."
+    },
+    {
+      "type": "link_list",
+      "id": "footer_menu",
+      "label": "Footer Menu"
+    },
+    {
+      "type": "url",
+      "id": "facebook_url",
+      "label": "Facebook URL"
+    },
+    {
+      "type": "url",
+      "id": "instagram_url",
+      "label": "Instagram URL"
+    },
+    {
+      "type": "url",
+      "id": "twitter_url",
+      "label": "Twitter URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "DPKCart Minimal Footer",
+      "category": "Footer"
+    }
+  ]
+}
+{% endschema %}

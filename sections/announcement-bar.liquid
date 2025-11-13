@@ -1,0 +1,64 @@
+<!-- sections/announcement-bar.liquid -->
+<div class="bg-gray-900 text-white text-sm text-center py-2 px-4 overflow-hidden relative">
+  <div 
+    x-data="{ activeIndex: 0, total: {{ section.blocks.size }} }" 
+    x-init="setInterval(() => { activeIndex = (activeIndex + 1) % total }, 4000)" 
+    class="relative h-6 flex items-center justify-center"
+  >
+    {% for block in section.blocks %}
+      <div 
+        x-show="activeIndex === {{ forloop.index0 }}" 
+        x-transition:enter="transition ease-in-out duration-500" 
+        x-transition:enter-start="opacity-0 translate-y-2" 
+        x-transition:enter-end="opacity-100 translate-y-0" 
+        x-transition:leave="transition ease-in-out duration-500" 
+        x-transition:leave-start="opacity-100 translate-y-0" 
+        x-transition:leave-end="opacity-0 -translate-y-2" 
+        class="absolute inset-0 flex justify-center items-center"
+      >
+        <p class="text-white font-medium">{{ block.settings.text }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Rotating Announcement Bar",
+  "max_blocks": 5,
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#111827"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "announcement",
+      "name": "Announcement Message",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Announcement Text",
+          "default": "🎉 Welcome to our store!"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Rotating Announcement Bar",
+      "category": "Header"
+    }
+  ]
+}
+{% endschema %}

@@ -8,7 +8,64 @@
  * ------------------------------------------------------------
  */
 {
-  "current": "Default",
+  "current": {
+    "sections": {
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "blocks": {
+          "announcement_BpUrEM": {
+            "type": "announcement",
+            "settings": {
+              "text": "🎉 Welcome to our store!"
+            }
+          },
+          "announcement_DCQYN4": {
+            "type": "announcement",
+            "settings": {
+              "text": "Free Shipping on our \" FIRST ORDER\""
+            }
+          },
+          "announcement_iLe9DW": {
+            "type": "announcement",
+            "settings": {
+              "text": "ALL PRODUCT 50% OFF"
+            }
+          }
+        },
+        "block_order": [
+          "announcement_BpUrEM",
+          "announcement_DCQYN4",
+          "announcement_iLe9DW"
+        ],
+        "custom_css": [],
+        "settings": {
+          "background_color": "#111827",
+          "text_color": "#ffffff"
+        }
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "mobile_menu_title": "Menu",
+          "menu": "main-menu"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "custom_css": [
+          "footer {background-color: black;}"
+        ],
+        "settings": {
+          "description": "Your trusted destination for smart shopping. Great deals, fast delivery, and quality service.",
+          "footer_menu": "",
+          "facebook_url": "https://www.facebook.com/",
+          "instagram_url": "https://www.instagram.com/_deepak_p_k?igsh=bG8ycThlNmo5MDNr&utm_source=qr",
+          "twitter_url": "https://x.com/"
+        }
+      }
+    },
+    "content_for_index": []
+  },
   "presets": {
     "Default": {}
   }
