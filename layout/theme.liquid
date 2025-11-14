@@ -10,8 +10,9 @@
     {{ content_for_header }}
     <!-- Header hook for plugins -->
     {{ 'application.css' | asset_url | stylesheet_tag }}
-    {{ 'application.js' | asset_url | script_tag }}
-    <link rel="icon" href="{{ 'shop.logo.png' | asset_url }}" type="image/png">
+    
+    <script src="{{ 'application.js' | asset_url}}" defer></script>
+    <link rel="icon" href="{{ 'dpkcart-logo.png' | asset_url }}" type="image/png">
 
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
